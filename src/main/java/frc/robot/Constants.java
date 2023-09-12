@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -57,12 +59,13 @@ public static class drivetrain {
     public static final Translation2d FrontRightLocation = new Translation2d(-(Constants.robot.A_WIDTH / 2), (Constants.robot.A_LENGTH / 2));
     public static final Translation2d BackLeftLocation = new Translation2d((Constants.robot.A_WIDTH / 2), -(Constants.robot.A_LENGTH / 2));
     public static final Translation2d BackRightLocation = new Translation2d((Constants.robot.A_WIDTH / 2), (Constants.robot.A_LENGTH / 2));
-
+    public static final int PIGEON = 15;
     public static final class modules {
         public static final double M1_ZERO = 43.2421875;
         public static final double M2_ZERO = -121.9921875;
         public static final double M3_ZERO = -153.6328125;
         public static final double M4_ZERO = -50.09765625;
+    
     }
 
     public static final class anglemotor {
@@ -99,5 +102,6 @@ public static class drivetrain {
 
   
   }
+
 }
   
