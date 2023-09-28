@@ -38,20 +38,20 @@ public final class Constants {
   }
 
   public static final class ids {
-    public static final int FL_SPEED = 1;
-    public static final int FL_ANGLE = 2;
+    public static final int FL_SPEED = 3;
+    public static final int FL_ANGLE = 4;
     public static final int FL_ENCODER = 11;
 
-    public static final int BL_SPEED = 3;
-    public static final int BL_ANGLE = 4;
+    public static final int BL_SPEED = 5;
+    public static final int BL_ANGLE = 6;
     public static final int BL_ENCODER = 12;
 
-    public static final int BR_SPEED = 5;
-    public static final int BR_ANGLE = 6;
+    public static final int BR_SPEED = 7;
+    public static final int BR_ANGLE = 8;
     public static final int BR_ENCODER = 13;
 
-    public static final int FR_SPEED = 7;
-    public static final int FR_ANGLE = 8;
+    public static final int FR_SPEED = 1;
+    public static final int FR_ANGLE = 2;
     public static final int FR_ENCODER = 14;
 
     public static final int PIGEON = 15;
@@ -94,48 +94,105 @@ public final class Constants {
     public static final Translation2d BR_LOCATION =
         new Translation2d(-(Constants.robot.A_WIDTH / 2), -(Constants.robot.A_LENGTH / 2));
 
-    public static final double FL_ZERO = -140.09765625;
-    public static final double BL_ZERO = -129.462890625;
-    public static final double BR_ZERO = 36.298828125;
-    public static final double FR_ZERO = -15.732421875;
+    public static final double FL_ZERO = -96.15234375;
+    public static final double BL_ZERO = 7.822265625000001;
+    public static final double BR_ZERO = 169.8046875;
+    public static final double FR_ZERO = -173.671875;
 
-    public static final class angle {
-      public static final double FL_kP = -0.008;
-      public static final double FL_kI = 0.0;
-      public static final double FL_kD = 0.0;
+  //   public static final class angle {
+  //     // public static final double FL_kP = -0.008;
+  //     // public static final double FL_kI = 0.0;
+  //     // public static final double FL_kD = 0.0;
 
-      public static final double BL_kP = -0.009;
-      public static final double BL_kI = 0.0;
-      public static final double BL_kD = 0.;
+  //     // public static final double BL_kP = -0.009;
+  //     // public static final double BL_kI = 0.0;
+  //     // public static final double BL_kD = 0.;
 
-      public static final double BR_kP = -0.009;
-      public static final double BR_kI = 0.0;
-      public static final double BR_kD = 0.0;
+  //     // public static final double BR_kP = -0.009;
+  //     // public static final double BR_kI = 0.0;
+  //     // public static final double BR_kD = 0.0;
 
-      public static final double FR_kP = -0.008;
-      public static final double FR_kI = 0.0;
-      public static final double FR_kD = 0.0;
-    }
+  //     // public static final double FR_kP = -0.008;
+  //     // public static final double FR_kI = 0.0;
+  //     // public static final double FR_kD = 0.0;
 
-    public static final class speed {
-      public static final double kP = 0.1;
-      public static final double kI = 0.0;
-      public static final double kD = 0.02;
-      public static final double kF = 0.05;
-    }
+  //     public static final double FL_kP = 0.0;
+  //     public static final double FL_kI = 0.0;
+  //     public static final double FL_kD = 0.0;
 
-    public static final class xyPID {
-      public static final double kP = 3.0;
-      public static final double kI = 0.0;
-      public static final double kD = 0.0;
-    }
+  //     public static final double BL_kP = 0.0;
+  //     public static final double BL_kI = 0.0;
+  //     public static final double BL_kD = 0.;
 
-    public static final class rotPID {
-      public static final double kP = 1.5;
-      public static final double kI = 0.0;
-      public static final double kD = 0.1;
-    }
+  //     public static final double BR_kP = 0.0;
+  //     public static final double BR_kI = 0.0;
+  //     public static final double BR_kD = 0.0;
+
+  //     public static final double FR_kP = 0.0;
+  //     public static final double FR_kI = 0.0;
+  //     public static final double FR_kD = 0.0;
+  //   }
+
+  //   public static final class speed {
+  //     public static final double kP = 0.1;
+  //     public static final double kI = 0.0;
+  //     public static final double kD = 0.02;
+  //     public static final double kF = 0.05;
+  //   }
+
+  //   public static final class xyPID {
+  //     public static final double kP = 3.0;
+  //     public static final double kI = 0.0;
+  //     public static final double kD = 0.0;
+  //   }
+
+  //   public static final class rotPID {
+  //     public static final double kP = 1.5;
+  //     public static final double kI = 0.0;
+  //     public static final double kD = 0.1;
+  //   }
+  // }
+
+  
+  public static final class angle {
+    public static final double FL_kP = -0.008;
+    public static final double FL_kI = 0.0;
+    public static final double FL_kD = 0.0;
+
+    public static final double BL_kP = -0.009;
+    public static final double BL_kI = 0.0;
+    public static final double BL_kD = 0.;
+
+    public static final double BR_kP = -0.009;
+    public static final double BR_kI = 0.0;
+    public static final double BR_kD = 0.0;
+
+    public static final double FR_kP = -0.008;
+    public static final double FR_kI = 0.0;
+    public static final double FR_kD = 0.0;
+
   }
+
+  public static final class speed {
+     public static final double kP = 0.1;
+       public static final double kI = 0.0;
+       public static final double kD = 0.02;
+      public static final double kF = 0.05;
+    
+  }
+
+  public static final class xyPID {
+    public static final double kP = 3.0;
+    public static final double kI = 0.0;
+    public static final double kD = 0.0;
+  }
+
+  public static final class rotPID {
+    public static final double kP = 2.5;
+    public static final double kI = 0.0;
+    public static final double kD = 0.0;
+  }
+}
 
   public static final class sensors {
     public static final Translation3d FRONT_POSITION = new Translation3d(0, 0, 0);

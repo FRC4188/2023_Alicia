@@ -61,36 +61,23 @@ public class RobotContainer {
   }
 
   private void smartdashboardButtons() {
-    SmartDashboard.putData(
-        "Set Velocity",
-        new RunCommand(
-            () -> drivetrain.setVelocity(SmartDashboard.getNumber("Set Drive Velocity", 0)),
-            drivetrain));
+
 
     SmartDashboard.putData(
-        "Set Rot PID",
-        new InstantCommand(
-            () ->
-                drivetrain.setRotPID(
-                    SmartDashboard.getNumber("Rot kP", 0),
-                    SmartDashboard.getNumber("Rot kI", 0),
-                    SmartDashboard.getNumber("Rot kD", 0))));
-
-    SmartDashboard.putData(
-        "Set Zero", new InstantCommand(() -> drivetrain.zeroPower(), drivetrain));
+        "Set Zero", new RunCommand(() -> drivetrain.zeroPower(), drivetrain));
   }
   ;
 
   private void addChooser() {
 
     autoChooser.setDefaultOption("Do nothing", new SequentialCommandGroup());
-    autoChooser.addOption(
-        "Straight",
-        AutoBuilder.buildAuto("Straight Line", new HashMap<>(), new PathConstraints(10.0, 3)));
-    autoChooser.addOption(
-        "2 Score", AutoBuilder.buildAuto("2 Score", new HashMap<>(), new PathConstraints(10.0, 3)));
+    // autoChooser.addOption(
+    //     "Straight",
+    //     AutoBuilder.buildAuto("Straight Line", new HashMap<>(), new PathConstraints(10.0, 3)));
+    // autoChooser.addOption(
+    //     "2 Score", AutoBuilder.buildAuto("2 Score", new HashMap<>(), new PathConstraints(10.0, 3)));
 
-    SmartDashboard.putData("pAuto Chooser", autoChooser);
+    // SmartDashboard.putData("pAuto Chooser", autoChooser);
   }
 
   /**

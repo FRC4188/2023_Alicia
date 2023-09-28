@@ -109,16 +109,15 @@ public class Drivetrain extends SubsystemBase {
     SmartDashboard.putString("Position", getPose2d().toString());
     SmartDashboard.putNumber("Angular Velocity", getChassisSpeeds().omegaRadiansPerSecond);
 
-    // SmartDashboard.putNumber("FL Angle", frontLeft.getModulePosition().angle.getDegrees());
-    // SmartDashboard.putNumber("BL Angle", backLeft.getModulePosition().angle.getDegrees());
-    // SmartDashboard.putNumber("BR Angle", backRight.getModulePosition().angle.getDegrees());
-    // SmartDashboard.putNumber("FR Angle", frontRight.getModulePosition().angle.getDegrees());
+    SmartDashboard.putNumber("FL Angle", frontLeft.getModulePosition().angle.getDegrees());
+    SmartDashboard.putNumber("BL Angle", backLeft.getModulePosition().angle.getDegrees());
+    SmartDashboard.putNumber("BR Angle", backRight.getModulePosition().angle.getDegrees());
+    SmartDashboard.putNumber("FR Angle", frontRight.getModulePosition().angle.getDegrees());
+    
   }
 
   public void putDashboard() {
-    SmartDashboard.putNumber("Rot kP", 0);
-    SmartDashboard.putNumber("Rot kI", 0);
-    SmartDashboard.putNumber("Rot kD", 0);
+
   }
 
   public void drive(double x, double y, double rot) {
@@ -255,4 +254,6 @@ public class Drivetrain extends SubsystemBase {
   public double getAngularVelocity() {
     return getChassisSpeeds().omegaRadiansPerSecond;
   }
+
+
 }
