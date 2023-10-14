@@ -7,12 +7,15 @@ import com.pathplanner.lib.PathConstraints;
 import csplib.inputs.CSP_Controller;
 import csplib.inputs.CSP_Controller.Scale;
 import csplib.utils.AutoBuilder;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.arm.Shoulder;
+import frc.robot.subsystems.claw.Claw;
 import frc.robot.subsystems.drivetrain.Drivetrain;
 import frc.robot.subsystems.sensors.Sensors;
 
@@ -24,12 +27,15 @@ import frc.robot.subsystems.sensors.Sensors;
  */
 public class RobotContainer {
 
-  private Drivetrain drivetrain = Drivetrain.getInstance();
-  private Sensors sensors = Sensors.getInstance();
+  private CSP_Controller pilot = new CSP_Controller(Constants.controller.PILOT_PORT);
+  private CSP_Controller copilot = new CSP_Controller(Constants.controller.COPILOT_PORT);
 
-  private CSP_Controller pilot = new CSP_Controller(0);
+  private Drivetrain drivetrain = Drivetrain.getInstance();
+  private Claw claw = Claw.getInstance();
+  private Shoulder shoulder = Shoulder.getInstance();
 
   private SendableChooser<Command> autoChooser = new SendableChooser<Command>();
+  private double currentAngle = 0.0;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -44,29 +50,36 @@ public class RobotContainer {
   }
 
   private void setDefaultCommands() {
-
     drivetrain.setDefaultCommand(
         new RunCommand(
             () ->
                 drivetrain.drive(
-                    pilot.getLeftY(Scale.SQUARED),
-                    pilot.getLeftX(Scale.SQUARED),
-                    pilot.getRightX(Scale.SQUARED)),
+                    pilot.rightBumper().getAsBoolean()
+                        ? pilot.getLeftY(Scale.LINEAR) * 0.5
+                        : pilot.getLeftY(Scale.LINEAR),
+                    pilot.rightBumper().getAsBoolean()
+                        ? pilot.getLeftX(Scale.LINEAR) * 0.5
+                        : pilot.getLeftX(Scale.LINEAR),
+                    pilot.rightBumper().getAsBoolean()
+                        ? pilot.getRightX(Scale.SQUARED) * 0.1
+                        : pilot.getRightX(Scale.SQUARED)),
             drivetrain));
   }
 
   /** Use this method to define your button->command mappings. */
   private void configureButtonBindings() {
-    pilot.getAButtonObj().onTrue(new InstantCommand(() -> sensors.resetPigeon(), sensors));
-  }
+    pilot
+        .getAButton()
+        .onTrue(
+            new InstantCommand(
+                () -> Sensors.getInstance().setPigeonAngle(new Rotation2d()),
+                Sensors.getInstance()));  }
 
   private void smartdashboardButtons() {
 
 
-    SmartDashboard.putData(
-        "Set Zero", new RunCommand(() -> drivetrain.zeroPower(), drivetrain));
-  }
-  ;
+    
+  };
 
   private void addChooser() {
 

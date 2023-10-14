@@ -9,13 +9,11 @@ public class Pigeon extends Pigeon2 {
     super.configFactoryDefault();
     super.clearStickyFaults();
 
-    super.configMountPose(AxisDirection.PositiveX, AxisDirection.PositiveZ);
-
     reset();
   }
 
   public void reset() {
-    super.setYaw(0.0);
+    super.setYaw(180.0);
   }
 
   public Rotation2d getRotation2d() {

@@ -13,6 +13,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
 
 /** Add your docs here. */
@@ -22,6 +23,7 @@ public class SwerveModule {
   private WPI_CANCoder encoder;
   private double zero;
   private PIDController anglePID;
+  private Timer timer = new Timer();
 
   /**
    * Creates a SwerveModule object
