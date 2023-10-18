@@ -70,7 +70,7 @@ public class Telescope extends SubsystemBase {
   public void zero() {
     if (!getLimitSwitch()) {
       motor.configReverseSoftLimitEnable(false);
-      set(-0.6);
+      set(-0.4);
     } else {
       motor.configReverseSoftLimitThreshold(Constants.arm.telescope.LOWER_LIMIT);
       motor.configReverseSoftLimitEnable(true);

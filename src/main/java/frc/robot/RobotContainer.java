@@ -14,6 +14,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.commands.arm.SetFlip;
+import frc.robot.commands.arm.SetFloor;
+import frc.robot.commands.arm.SetPosition;
+import frc.robot.commands.groups.Reset;
 import frc.robot.subsystems.arm.Shoulder;
 import frc.robot.subsystems.claw.Claw;
 import frc.robot.subsystems.drivetrain.Drivetrain;
@@ -73,7 +77,91 @@ public class RobotContainer {
         .onTrue(
             new InstantCommand(
                 () -> Sensors.getInstance().setPigeonAngle(new Rotation2d()),
-                Sensors.getInstance()));  }
+                Sensors.getInstance()));  
+
+  pilot
+        .getLeftTButton()
+        .whileTrue(new RunCommand(() -> claw.outtake(), claw))
+        .onFalse(new InstantCommand(() -> claw.disable(), claw));
+    pilot
+        .getRightTButton()
+        .whileTrue(new RunCommand(() -> claw.intake(), claw))
+        .onFalse(new InstantCommand(() -> claw.disable(), claw));
+
+    copilot
+        .getAButton()
+        .onTrue(new SetFloor(Constants.arm.configs.FLOOR_CUBE, Constants.arm.configs.FLOOR_CONE));
+
+    copilot
+        .getXButton()
+        .onTrue(new SetPosition(Constants.arm.configs.SS_CUBE, Constants.arm.configs.SS_CONE));
+
+    copilot
+        .getYButton()
+        .onTrue(new SetPosition(Constants.arm.configs.DS_CUBE, Constants.arm.configs.DS_CONE));
+
+    copilot
+        .getBButton()
+        .onTrue(new SetFloor(Constants.arm.configs.FLOOR_CUBE, Constants.arm.configs.TIPPED_CONE));
+
+    copilot
+        .getUpButton()
+        .onTrue(new SetPosition(Constants.arm.configs.HIGH_CUBE, Constants.arm.configs.HIGH_CONE));
+
+    copilot
+        .getRightButton()
+        .onTrue(new SetPosition(Constants.arm.configs.MID_CUBE, Constants.arm.configs.MID_CONE));
+
+    copilot
+        .getLeftButton()
+        .onTrue(new SetPosition(Constants.arm.configs.MID_CUBE, Constants.arm.configs.MID_CONE));
+
+    copilot
+        .getDownButton()
+        .onTrue(new SetPosition(Constants.arm.configs.LOW_CUBE, Constants.arm.configs.LOW_CONE));
+
+    // copilot
+    //     .getRightTButton().onTrue(
+    //         new InstantCommand(() -> {currentAngle = shoulder.getAngle();})
+    //         .andThen(
+    //             new SetPosition(currentAngle + (shoulder.getIsFlipped() ? -1 : 1),
+    // Telescope.getInstance().getPosition(), Wrist.getInstance().getMotorAngle()))
+    //         );
+
+    // copilot
+    //     .getLeftBumperButton().onTrue(
+    //         new InstantCommand(() -> {currentAngle = shoulder.getAngle();})
+    //         .andThen(
+    //             new SetPosition(currentAngle - (shoulder.getIsFlipped() ? -1 : 1),
+    // Telescope.getInstance().getPosition(), Wrist.getInstance().getMotorAngle()))
+    //         );
+    // copilot
+    //     .getRightTButton()
+    //     .onTrue(new SetFloor(Constants.arm.configs.BACK_TIPPED_CONE,
+    // Constants.arm.configs.BACK_TIPPED_CONE));
+
+    // copilot.getRightBumperButton().debounce(0.05).onTrue(new SetCube());
+
+    // copilot.getLeftBumperButton().debounce(0.05).onTrue(new SetFlip().andThen(new Reset()));
+
+    // copilot.getBackButton().onTrue(new Reset());
+    // copilot.getStartButton().onTrue(new Reset());
+
+    // Raymond here we'll see if i like this
+
+    copilot
+        .getLeftBumperButton()
+        .debounce(0.05)
+        .onTrue(new InstantCommand(() -> claw.setIsCube(false)));
+    copilot
+        .getRightBumperButton()
+        .debounce(0.05)
+        .onTrue(new InstantCommand(() -> claw.setIsCube(true)));
+
+    copilot.getBackButton().onTrue(new SetFlip());
+    copilot.getStartButton().onTrue(new Reset());
+              
+              }
 
   private void smartdashboardButtons() {
 
