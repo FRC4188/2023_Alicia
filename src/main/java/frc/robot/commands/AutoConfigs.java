@@ -90,7 +90,7 @@ public class AutoConfigs {
               Map.entry("Reset", new Reset()),
               Map.entry("Print", new PrintCommand("IT DOESNT END")),
               Map.entry("Intake", new Intake()),
-              Map.entry("Outtake", new Outtake().withTimeout(0.2)),
+              Map.entry("Outtake", new Outtake().withTimeout(1.0)),
               Map.entry("Balance", new Balance()),
               Map.entry("Timed Balance", new Balance().withTimeout(3.0)),
               Map.entry(
@@ -98,7 +98,7 @@ public class AutoConfigs {
                   new SetFlip().andThen(new Reset()).withTimeout(1.5).andThen(new Balance()))));
 
   public static final class RFlat2 {
-    public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(5, 3)};
+    public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(2, 1)};
   }
 
   public static final class RFlat3 {
@@ -107,9 +107,11 @@ public class AutoConfigs {
 
   public static final class RMid15P {
     public static final PathConstraints[] CONSTRAINTS = {
-      new PathConstraints(3, 2), new PathConstraints(5, 3), new PathConstraints(3.5, 2)
+      new PathConstraints(3, 2), new PathConstraints(3, 3), new PathConstraints(3.5, 2)
     };
   }
+
+  
 
   public static final class RMid2P {
     public static final PathConstraints[] CONSTRAINTS = {
