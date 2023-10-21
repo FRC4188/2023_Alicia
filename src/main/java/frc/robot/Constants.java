@@ -217,10 +217,10 @@ public final class Constants {
       public static final double[][] DS_CONE = {{14.0, 0.1875, 82.0}, {-12.0, 0.1875, -82.0}};
       public static final double[][] DS_CUBE = {{0, 0.1875, 0}, {0, 0.1875, 0}};
 
-      public static final double[][] FLOOR_CONE = {{83.0, 0.1875, 57.0}, {-83.0, 0.1875, -57.0}};
-      public static final double[][] FLOOR_CUBE = {{104.0, 0.45, 125.0}, {-111.0, 0.25, 35.0}};
-      public static final double[][] TIPPED_CONE = {{117, 0.1875, 7.0}, {-115, 0.1875, 5.0}};
-      public static final double[][] BACK_TIPPED_CONE = {{86.0, 0.5, 125.0}, {-85.0, 0.5, -125.0}};
+      public static final double[][] FLOOR_CONE = {{72.0, 0.1875, 57.0}, {-85.0, 0.1875, -57.0}};
+      public static final double[][] FLOOR_CUBE = {{90.0, 0.45, 125.0}, {-120.0, 0.25, 35.0}};
+      public static final double[][] TIPPED_CONE = {{107, 0.1875, 7.0}, {-120, 0.1875, 5.0}};
+      public static final double[][] BACK_TIPPED_CONE = {{85.0, 0.5, 125.0}, {-87.0, 0.5, -125.0}};
 
       public static final double[][] YOSHI_CUBE = {{90, 0.3, -10}, {90, 0.5, 90}};
 
@@ -243,8 +243,8 @@ public final class Constants {
       public static final double kD = 0.00;
       public static final double kF = 0.0;
 
-      public static final double MAX_VEL = 600.0;
-      public static final double MAX_ACCEL = 540.0;
+      public static final double MAX_VEL = 1000.0;
+      public static final double MAX_ACCEL = 720.0;
 
       public static final double ALLOWED_ERROR = 0.75;
 
@@ -296,8 +296,8 @@ public final class Constants {
       public static final double kG = 0;
       public static final double kV = 0;
 
-      public static final double MAX_VEL = 750.0;
-      public static final double MAX_ACCEL = 400.0;
+      public static final double MAX_VEL = 1000.0;
+      public static final double MAX_ACCEL = 520.0;
       public static final Constraints CONSTRAINTS = new Constraints(MAX_VEL, MAX_ACCEL);
       public static final double ALLOWED_ERROR = 3.0;
     }

@@ -86,8 +86,7 @@ public class RobotContainer {
     pilot
         .getRightTButton()
         .whileTrue(new RunCommand(() -> claw.intake(), claw))
-        .onFalse(new InstantCommand(() -> claw.disable(), claw));
-
+               .onFalse(new InstantCommand(() -> claw.disable(), claw));
     copilot
         .getAButton()
         .onTrue(new SetFloor(Constants.arm.configs.FLOOR_CUBE, Constants.arm.configs.FLOOR_CONE));
