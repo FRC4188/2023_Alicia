@@ -47,7 +47,7 @@ public class AutoConfigs {
                   new ConditionalCommand(
                       new SetPosition(
                               Constants.arm.configs.HIGH_CUBE, Constants.arm.configs.HIGH_CONE)
-                          .withTimeout(2.0),
+                          .withTimeout(2.5),
                       new SetPosition(
                               Constants.arm.configs.HIGH_CUBE, Constants.arm.configs.HIGH_CONE)
                           .withTimeout(2.5),
@@ -57,10 +57,10 @@ public class AutoConfigs {
                   new ConditionalCommand(
                       new SetPosition(
                               Constants.arm.configs.MID_CUBE, Constants.arm.configs.MID_CONE)
-                          .withTimeout(1.5),
+                          .withTimeout(2.0),
                       new SetPosition(
                               Constants.arm.configs.MID_CUBE, Constants.arm.configs.MID_CONE)
-                          .withTimeout(1.5),
+                          .withTimeout(2.0),
                       Claw.getInstance()::getIsCube)),
               Map.entry(
                   "Spit Low",
@@ -88,6 +88,7 @@ public class AutoConfigs {
               Map.entry("Reset Flipped", new SetFlip().andThen(new Reset())),
               Map.entry("Set Flipped", new SetFlip()),
               Map.entry("Reset", new Reset()),
+
               Map.entry("Print", new PrintCommand("IT DOESNT END")),
               Map.entry("Intake", new Intake()),
               Map.entry("Outtake", new Outtake().withTimeout(1.0)),
@@ -98,32 +99,51 @@ public class AutoConfigs {
                   new SetFlip().andThen(new Reset()).withTimeout(1.5).andThen(new Balance()))));
 
   public static final class RFlat2 {
-    public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(2, 1)};
+    public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(2, 2)};
   }
 
-  public static final class RFlat3 {
-    public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(7, 3.5)};
-  }
+//   public static final class RFlat3 {
+//     public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(7, 3.5)};
+//   }
 
   public static final class RMid15P {
     public static final PathConstraints[] CONSTRAINTS = {
-      new PathConstraints(3, 2), new PathConstraints(3, 3), new PathConstraints(3.5, 2)
+      new PathConstraints(3, 2), new PathConstraints(4, 3), new PathConstraints(2.5, 2)
+    };
+  }
+
+  public static final class Bump25 {
+    public static final PathConstraints[] CONSTRAINTS = {
+      new PathConstraints(5, 3)
+    };
+  }
+
+  public static final class Flat2 {
+    public static final PathConstraints[] CONSTRAINTS = {
+      new PathConstraints(7, 3.5)
     };
   }
 
   
 
-  public static final class RMid2P {
-    public static final PathConstraints[] CONSTRAINTS = {
-      new PathConstraints(3, 2),
-      new PathConstraints(6, 4),
-      new PathConstraints(4, 3),
-      new PathConstraints(2, 1),
-      new PathConstraints(5, 3)
-    };
-  }
+//   public static final class RMid2P {
+//     public static final PathConstraints[] CONSTRAINTS = {
+//       new PathConstraints(3, 2),
+//       new PathConstraints(6, 4),
+//       new PathConstraints(4, 3),
+//       new PathConstraints(2, 1),
+//       new PathConstraints(5, 3)
+//     };
+//   }
 
-  public static final class PerfectAuto {
-    public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(3, 1)};
-  }
+//   public static final class PerfectAuto {
+//     public static final PathConstraints[] CONSTRAINTS = {new PathConstraints(3, 1)};
+//   }
+
+//   public static final class MidBalance {
+//     public static final PathConstraints[] CONSTRAINTS = {
+//         new PathConstraints(3, 1),
+        
+//     };
+//   }
 }

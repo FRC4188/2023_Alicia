@@ -217,10 +217,10 @@ public final class Constants {
       public static final double[][] DS_CONE = {{14.0, 0.1875, 82.0}, {-12.0, 0.1875, -82.0}};
       public static final double[][] DS_CUBE = {{0, 0.1875, 0}, {0, 0.1875, 0}};
 
-      public static final double[][] FLOOR_CONE = {{72.0, 0.1875, 57.0}, {-85.0, 0.1875, -57.0}};
-      public static final double[][] FLOOR_CUBE = {{90.0, 0.45, 125.0}, {-120.0, 0.25, 35.0}};
-      public static final double[][] TIPPED_CONE = {{107, 0.1875, 7.0}, {-120, 0.1875, 5.0}};
-      public static final double[][] BACK_TIPPED_CONE = {{85.0, 0.5, 125.0}, {-87.0, 0.5, -125.0}};
+      public static final double[][] FLOOR_CONE = {{75.0, 0.1875, 57.0}, {-82.0, 0.1875, -57.0}};
+      public static final double[][] FLOOR_CUBE = {{93.0, 0.45, 122.0}, {-120.0, 0.25, 40.0}};
+      public static final double[][] TIPPED_CONE = {{110, 0.1875, 7.0}, {-118, 0.1875, 5.0}};
+     // public static final double[][] BACK_TIPPED_CONE = {{85.0, 0.5, 125.0}, {-87.0, 0.5, -125.0}};
 
       public static final double[][] YOSHI_CUBE = {{90, 0.3, -10}, {90, 0.5, 90}};
 
@@ -228,7 +228,7 @@ public final class Constants {
     }
 
     public static final class shoulder {
-      public static final double ZERO = -147.3046875;
+      public static final double ZERO = 111.88;
       public static final double GEAR_RATIO = 132.741; // 132.741 to 1
       public static final double ROTATIONS_PER_DEGREE = GEAR_RATIO / 360;
 

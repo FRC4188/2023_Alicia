@@ -11,6 +11,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ConditionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -69,6 +70,14 @@ public class RobotContainer {
                         ? pilot.getRightX(Scale.SQUARED) * 0.1
                         : pilot.getRightX(Scale.SQUARED)),
             drivetrain));
+
+    // claw.setDefaultCommand(
+    //     new ConditionalCommand(
+    //         new RunCommand(() -> claw.set(0.0), claw), 
+    //         new RunCommand(() -> claw.set(0.18), claw), 
+    //         claw::getIsCube
+    //     ) 
+    // );
   }
 
   /** Use this method to define your button->command mappings. */
@@ -152,7 +161,8 @@ public class RobotContainer {
     copilot
         .getLeftBumperButton()
         .debounce(0.05)
-        .onTrue(new InstantCommand(() -> claw.setIsCube(false)));
+        .onTrue(new InstantCommand(() -> claw.setIsCube(false)).andThen(new InstantCommand(() -> claw.disable()))
+        );
     copilot
         .getRightBumperButton()
         .debounce(0.05)
@@ -178,9 +188,12 @@ public class RobotContainer {
     // autoChooser.addOption(
     //     "2 Score", AutoBuilder.buildAuto("2 Score", new HashMap<>(), new PathConstraints(10.0, 3)));
 
-    // SmartDashboard.putData("pAuto Chooser", autoChooser);
+    SmartDashboard.putData("pAuto Chooser", autoChooser);
     autoChooser.addOption("Balance", AutoBuilder.buildAuto("Balance", AutoConfigs.EVENTS, AutoConfigs.RFlat2.CONSTRAINTS));
-  }
+    autoChooser.addOption("Mid Balance", AutoBuilder.buildAuto("Mid Balance", AutoConfigs.EVENTS, AutoConfigs.RMid15P.CONSTRAINTS));
+    autoChooser.addOption("Bump 2.5", AutoBuilder.buildAuto("Bump2.5", AutoConfigs.EVENTS, AutoConfigs.Bump25.CONSTRAINTS));
+    autoChooser.addOption("Flat 3", AutoBuilder.buildAuto("Flat2", AutoConfigs.EVENTS, AutoConfigs.Flat2.CONSTRAINTS));
+}
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

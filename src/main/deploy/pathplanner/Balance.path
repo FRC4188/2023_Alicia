@@ -20,8 +20,8 @@
           "Outtake"
         ],
         "executionBehavior": "parallel",
-        "waitBehavior": "deadline",
-        "waitTime": 1.0
+        "waitBehavior": "none",
+        "waitTime": 0
       }
     },
     {

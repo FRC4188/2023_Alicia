@@ -25,15 +25,9 @@ public class SetFlip extends SequentialCommandGroup {
   public SetFlip() {
     addCommands(
       new SequentialCommandGroup(
+
         new InstantCommand(() -> shoulder.setFlip(!shoulder.getIsFlipped())),
-        new Reset(),
-        // new ConditionalCommand(
-        //   new WaitUntilCommand(() -> wrist.atGoal(-wristAngle)),
-        //   new WaitUntilCommand(() -> wrist.atGoal(wristAngle)),
-        //     shoulder::getIsFlipped),
-        new WaitCommand(1.0),
         new Reset()
-        
         )
       );
     

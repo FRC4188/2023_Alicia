@@ -39,6 +39,7 @@ public class Claw extends SubsystemBase {
     motor.disable();
   }
 
+
   public void set(double percent) {
     motor.set(percent);
   }
